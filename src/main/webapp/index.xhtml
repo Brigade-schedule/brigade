@@ -1,36 +1,44 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
-    <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Страница приветствия Primefaces" />
-        <br />
-        <h:link outcome="/jsf/prWorkCentre/List" value="Show All PrWorkCentre Items"/>
-        <br />
-        <h:link outcome="/jsf/psBgraf/List" value="Show All PsBgraf Items"/>
-        <br />
-        <h:link outcome="/jsf/psBrigade/List" value="Show All PsBrigade Items"/>
-        <br />
-        <h:link outcome="/jsf/psPerson/List" value="Show All PsPerson Items"/>
-        <br />
-        <h:link outcome="/jsf/psProf/List" value="Show All PsProf Items"/>
-        <br />
-        <h:link outcome="/jsf/psShift/List" value="Show All PsShift Items"/>
-        <br />
-        <h:link outcome="/jsf/psTShift/List" value="Show All PsTShift Items"/>
-    </h:body>
-
-
-
-
-
-
-
+    
+    <p:layout fullPage="true">
+        <p:layoutUnit position="north">
+        </p:layoutUnit>
+        <p:layoutUnit position="west" >
+            <h:form>  
+                <p:growl id="messages" showDetail="false"/>
+                <p:menu>
+                    <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                    <p:submenu label="#{bundle.Maintenance}">
+                        <p:menuitem value="PrWorkCentre" outcome="/jsf/prWorkCentre/List.xhtml" />
+                        <p:menuitem value="PsBgraf" outcome="/jsf/psBgraf/List.xhtml" />
+                        <p:menuitem value="PsBrigade" outcome="/jsf/psBrigade/List.xhtml" />
+                        <p:menuitem value="PsPerson" outcome="/jsf/psPerson/List.xhtml" />
+                        <p:menuitem value="PsProf" outcome="/jsf/psProf/List.xhtml" />
+                        <p:menuitem value="PsShift" outcome="/jsf/psShift/List.xhtml" />
+                        <p:menuitem value="PsTShift" outcome="/jsf/psTShift/List.xhtml" />
+                    </p:submenu>
+                </p:menu>
+            </h:form>
+        </p:layoutUnit>
+        <p:layoutUnit position="center" >
+            <h:body>
+                <f:view>
+                    <h:form>
+                        <p:dataTable id="datalist" value="#{prWorkCentreController.items}" var="item">
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+            </h:body>
+        </p:layoutUnit>
+    </p:layout>
 </html>
 
