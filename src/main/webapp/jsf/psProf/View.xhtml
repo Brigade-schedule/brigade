@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PsProfViewDlg" widgetVar="PsProfViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPsProfTitle}">
+            <h:form id="PsProfViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{psProfController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPsProfLabel_profId}"/>
+                        <h:outputText value="#{psProfController.selected.profId}" title="#{bundle.ViewPsProfTitle_profId}"/>
+                        <h:outputText value="#{bundle.ViewPsProfLabel_wcId}"/>
+                        <h:outputText value="#{psProfController.selected.wcId}" title="#{bundle.ViewPsProfTitle_wcId}"/>
+                        <h:outputText value="#{bundle.ViewPsProfLabel_textR}"/>
+                        <h:outputText value="#{psProfController.selected.textR}" title="#{bundle.ViewPsProfTitle_textR}"/>
+                        <h:outputText value="#{bundle.ViewPsProfLabel_nameProf}"/>
+                        <h:outputText value="#{psProfController.selected.nameProf}" title="#{bundle.ViewPsProfTitle_nameProf}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PsProfViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PsTShiftCreateDlg" widgetVar="PsTShiftCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePsTShiftTitle}">
+            <h:form id="PsTShiftCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{psTShiftController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePsTShiftLabel_TShiftId}" for="TShiftId" />
+                        <p:inputText id="TShiftId" value="#{psTShiftController.selected.TShiftId}" title="#{bundle.CreatePsTShiftTitle_TShiftId}" required="true" requiredMessage="#{bundle.CreatePsTShiftRequiredMessage_TShiftId}"/>
+                        <p:outputLabel value="#{bundle.CreatePsTShiftLabel_textR}" for="textR" />
+                        <p:inputText id="textR" value="#{psTShiftController.selected.textR}" title="#{bundle.CreatePsTShiftTitle_textR}" />
+                        <p:outputLabel value="#{bundle.CreatePsTShiftLabel_workDay}" for="workDay" />
+                        <p:inputText id="workDay" value="#{psTShiftController.selected.workDay}" title="#{bundle.CreatePsTShiftTitle_workDay}" />
+                        <p:outputLabel value="#{bundle.CreatePsTShiftLabel_weekDay}" for="weekDay" />
+                        <p:inputText id="weekDay" value="#{psTShiftController.selected.weekDay}" title="#{bundle.CreatePsTShiftTitle_weekDay}" />
+                        <p:outputLabel value="#{bundle.CreatePsTShiftLabel_workTime}" for="workTime" />
+                        <p:inputText id="workTime" value="#{psTShiftController.selected.workTime}" title="#{bundle.CreatePsTShiftTitle_workTime}" />
+                        <p:outputLabel value="#{bundle.CreatePsTShiftLabel_tamplWeek}" for="tamplWeek" />
+                        <p:inputText id="tamplWeek" value="#{psTShiftController.selected.tamplWeek}" title="#{bundle.CreatePsTShiftTitle_tamplWeek}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{psTShiftController.create}" value="#{bundle.Save}" update="display,:PsTShiftListForm:datalist,:growl" oncomplete="handleSubmit(args,'PsTShiftCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PsTShiftCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

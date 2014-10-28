@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PsShiftEditDlg" widgetVar="PsShiftEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPsShiftTitle}">
+            <h:form id="PsShiftEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{psShiftController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPsShiftLabel_shiftId}" for="shiftId" />
+                        <p:inputText id="shiftId" value="#{psShiftController.selected.shiftId}" title="#{bundle.EditPsShiftTitle_shiftId}" required="true" requiredMessage="#{bundle.EditPsShiftRequiredMessage_shiftId}"/>
+                        <p:outputLabel value="#{bundle.EditPsShiftLabel_shiftName}" for="shiftName" />
+                        <p:inputText id="shiftName" value="#{psShiftController.selected.shiftName}" title="#{bundle.EditPsShiftTitle_shiftName}" />
+                        <p:outputLabel value="#{bundle.EditPsShiftLabel_tibeg}" for="tibeg" />
+                        <p:inputText id="tibeg" value="#{psShiftController.selected.tibeg}" title="#{bundle.EditPsShiftTitle_tibeg}" />
+                        <p:outputLabel value="#{bundle.EditPsShiftLabel_tiend}" for="tiend" />
+                        <p:inputText id="tiend" value="#{psShiftController.selected.tiend}" title="#{bundle.EditPsShiftTitle_tiend}" />
+                        <p:outputLabel value="#{bundle.EditPsShiftLabel_textR}" for="textR" />
+                        <p:inputText id="textR" value="#{psShiftController.selected.textR}" title="#{bundle.EditPsShiftTitle_textR}" />
+                        <p:outputLabel value="#{bundle.EditPsShiftLabel_NHours}" for="NHours" />
+                        <p:inputText id="NHours" value="#{psShiftController.selected.NHours}" title="#{bundle.EditPsShiftTitle_NHours}" />
+                        <p:outputLabel value="#{bundle.EditPsShiftLabel_TShiftId}" for="TShiftId" />
+                        <p:selectOneMenu id="TShiftId" value="#{psShiftController.selected.TShiftId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{psTShiftController.itemsAvailableSelectOne}"
+                                           var="TShiftIdItem"
+                                           itemValue="#{TShiftIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{psShiftController.update}" value="#{bundle.Save}" update="display,:PsShiftListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PsShiftEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PsShiftEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PsBgrafCreateDlg" widgetVar="PsBgrafCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePsBgrafTitle}">
+            <h:form id="PsBgrafCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{psBgrafController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePsBgrafLabel_bgrafId}" for="bgrafId" />
+                        <p:inputText id="bgrafId" value="#{psBgrafController.selected.bgrafId}" title="#{bundle.CreatePsBgrafTitle_bgrafId}" required="true" requiredMessage="#{bundle.CreatePsBgrafRequiredMessage_bgrafId}"/>
+                        <p:outputLabel value="#{bundle.CreatePsBgrafLabel_ddBgraf}" for="ddBgraf" />
+                        <p:calendar id="ddBgraf" pattern="MM/dd/yyyy" value="#{psBgrafController.selected.ddBgraf}" title="#{bundle.EditPsBgrafTitle_ddBgraf}" required="true" requiredMessage="#{bundle.EditPsBgrafRequiredMessage_ddBgraf}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreatePsBgrafLabel_masterUserId}" for="masterUserId" />
+                        <p:inputText id="masterUserId" value="#{psBgrafController.selected.masterUserId}" title="#{bundle.CreatePsBgrafTitle_masterUserId}" />
+                        <p:outputLabel value="#{bundle.CreatePsBgrafLabel_userId}" for="userId" />
+                        <p:inputText id="userId" value="#{psBgrafController.selected.userId}" title="#{bundle.CreatePsBgrafTitle_userId}" />
+                        <p:outputLabel value="#{bundle.CreatePsBgrafLabel_dtIn}" for="dtIn" />
+                        <p:calendar id="dtIn" pattern="MM/dd/yyyy" value="#{psBgrafController.selected.dtIn}" title="#{bundle.EditPsBgrafTitle_dtIn}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreatePsBgrafLabel_wcId}" for="wcId" />
+                        <p:selectOneMenu id="wcId" value="#{psBgrafController.selected.wcId}" required="true" requiredMessage="#{bundle.EditPsBgrafRequiredMessage_wcId}">
+                            <f:selectItems value="#{prWorkCentreController.itemsAvailableSelectOne}"
+                                           var="wcIdItem"
+                                           itemValue="#{wcIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePsBgrafLabel_pbrigId}" for="pbrigId" />
+                        <p:selectOneMenu id="pbrigId" value="#{psBgrafController.selected.pbrigId}" required="true" requiredMessage="#{bundle.EditPsBgrafRequiredMessage_pbrigId}">
+                            <f:selectItems value="#{psBrigadeController.itemsAvailableSelectOne}"
+                                           var="pbrigIdItem"
+                                           itemValue="#{pbrigIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePsBgrafLabel_fbrigId}" for="fbrigId" />
+                        <p:selectOneMenu id="fbrigId" value="#{psBgrafController.selected.fbrigId}" >
+                            <f:selectItems value="#{psBrigadeController.itemsAvailableSelectOne}"
+                                           var="fbrigIdItem"
+                                           itemValue="#{fbrigIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePsBgrafLabel_shiftId}" for="shiftId" />
+                        <p:selectOneMenu id="shiftId" value="#{psBgrafController.selected.shiftId}" required="true" requiredMessage="#{bundle.EditPsBgrafRequiredMessage_shiftId}">
+                            <f:selectItems value="#{psShiftController.itemsAvailableSelectOne}"
+                                           var="shiftIdItem"
+                                           itemValue="#{shiftIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{psBgrafController.create}" value="#{bundle.Save}" update="display,:PsBgrafListForm:datalist,:growl" oncomplete="handleSubmit(args,'PsBgrafCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PsBgrafCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

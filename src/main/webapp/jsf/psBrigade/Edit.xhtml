@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PsBrigadeEditDlg" widgetVar="PsBrigadeEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPsBrigadeTitle}">
+            <h:form id="PsBrigadeEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{psBrigadeController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPsBrigadeLabel_brigadeId}" for="brigadeId" />
+                        <p:inputText id="brigadeId" value="#{psBrigadeController.selected.brigadeId}" title="#{bundle.EditPsBrigadeTitle_brigadeId}" required="true" requiredMessage="#{bundle.EditPsBrigadeRequiredMessage_brigadeId}"/>
+                        <p:outputLabel value="#{bundle.EditPsBrigadeLabel_brigadeName}" for="brigadeName" />
+                        <p:inputText id="brigadeName" value="#{psBrigadeController.selected.brigadeName}" title="#{bundle.EditPsBrigadeTitle_brigadeName}" />
+                        <p:outputLabel value="#{bundle.EditPsBrigadeLabel_profId}" for="profId" />
+                        <p:inputText id="profId" value="#{psBrigadeController.selected.profId}" title="#{bundle.EditPsBrigadeTitle_profId}" />
+                        <p:outputLabel value="#{bundle.EditPsBrigadeLabel_brigadeNumber}" for="brigadeNumber" />
+                        <p:inputText id="brigadeNumber" value="#{psBrigadeController.selected.brigadeNumber}" title="#{bundle.EditPsBrigadeTitle_brigadeNumber}" />
+                        <p:outputLabel value="#{bundle.EditPsBrigadeLabel_masterUserId}" for="masterUserId" />
+                        <p:inputText id="masterUserId" value="#{psBrigadeController.selected.masterUserId}" title="#{bundle.EditPsBrigadeTitle_masterUserId}" />
+                        <p:outputLabel value="#{bundle.EditPsBrigadeLabel_wcId}" for="wcId" />
+                        <p:selectOneMenu id="wcId" value="#{psBrigadeController.selected.wcId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{prWorkCentreController.itemsAvailableSelectOne}"
+                                           var="wcIdItem"
+                                           itemValue="#{wcIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditPsBrigadeLabel_TShiftId}" for="TShiftId" />
+                        <p:selectOneMenu id="TShiftId" value="#{psBrigadeController.selected.TShiftId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{psTShiftController.itemsAvailableSelectOne}"
+                                           var="TShiftIdItem"
+                                           itemValue="#{TShiftIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{psBrigadeController.update}" value="#{bundle.Save}" update="display,:PsBrigadeListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PsBrigadeEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PsBrigadeEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

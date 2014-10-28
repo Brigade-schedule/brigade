@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PrWorkCentreCreateDlg" widgetVar="PrWorkCentreCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePrWorkCentreTitle}">
+            <h:form id="PrWorkCentreCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{prWorkCentreController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePrWorkCentreLabel_wcId}" for="wcId" />
+                        <p:inputText id="wcId" value="#{prWorkCentreController.selected.wcId}" title="#{bundle.CreatePrWorkCentreTitle_wcId}" required="true" requiredMessage="#{bundle.CreatePrWorkCentreRequiredMessage_wcId}"/>
+                        <p:outputLabel value="#{bundle.CreatePrWorkCentreLabel_textR}" for="textR" />
+                        <p:inputText id="textR" value="#{prWorkCentreController.selected.textR}" title="#{bundle.CreatePrWorkCentreTitle_textR}" />
+                        <p:outputLabel value="#{bundle.CreatePrWorkCentreLabel_TShiftId}" for="TShiftId" />
+                        <p:selectOneMenu id="TShiftId" value="#{prWorkCentreController.selected.TShiftId}" >
+                            <f:selectItems value="#{psTShiftController.itemsAvailableSelectOne}"
+                                           var="TShiftIdItem"
+                                           itemValue="#{TShiftIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{prWorkCentreController.create}" value="#{bundle.Save}" update="display,:PrWorkCentreListForm:datalist,:growl" oncomplete="handleSubmit(args,'PrWorkCentreCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PrWorkCentreCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

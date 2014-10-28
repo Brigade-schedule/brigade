@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PsBrigadeViewDlg" widgetVar="PsBrigadeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPsBrigadeTitle}">
+            <h:form id="PsBrigadeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{psBrigadeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPsBrigadeLabel_brigadeId}"/>
+                        <h:outputText value="#{psBrigadeController.selected.brigadeId}" title="#{bundle.ViewPsBrigadeTitle_brigadeId}"/>
+                        <h:outputText value="#{bundle.ViewPsBrigadeLabel_brigadeName}"/>
+                        <h:outputText value="#{psBrigadeController.selected.brigadeName}" title="#{bundle.ViewPsBrigadeTitle_brigadeName}"/>
+                        <h:outputText value="#{bundle.ViewPsBrigadeLabel_profId}"/>
+                        <h:outputText value="#{psBrigadeController.selected.profId}" title="#{bundle.ViewPsBrigadeTitle_profId}"/>
+                        <h:outputText value="#{bundle.ViewPsBrigadeLabel_brigadeNumber}"/>
+                        <h:outputText value="#{psBrigadeController.selected.brigadeNumber}" title="#{bundle.ViewPsBrigadeTitle_brigadeNumber}"/>
+                        <h:outputText value="#{bundle.ViewPsBrigadeLabel_masterUserId}"/>
+                        <h:outputText value="#{psBrigadeController.selected.masterUserId}" title="#{bundle.ViewPsBrigadeTitle_masterUserId}"/>
+                        <h:outputText value="#{bundle.ViewPsBrigadeLabel_wcId}"/>
+                        <h:outputText value="#{psBrigadeController.selected.wcId}" title="#{bundle.ViewPsBrigadeTitle_wcId}"/>
+                        <h:outputText value="#{bundle.ViewPsBrigadeLabel_TShiftId}"/>
+                        <h:outputText value="#{psBrigadeController.selected.TShiftId}" title="#{bundle.ViewPsBrigadeTitle_TShiftId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PsBrigadeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

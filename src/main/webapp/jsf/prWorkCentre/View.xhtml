@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PrWorkCentreViewDlg" widgetVar="PrWorkCentreViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPrWorkCentreTitle}">
+            <h:form id="PrWorkCentreViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{prWorkCentreController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPrWorkCentreLabel_wcId}"/>
+                        <h:outputText value="#{prWorkCentreController.selected.wcId}" title="#{bundle.ViewPrWorkCentreTitle_wcId}"/>
+                        <h:outputText value="#{bundle.ViewPrWorkCentreLabel_textR}"/>
+                        <h:outputText value="#{prWorkCentreController.selected.textR}" title="#{bundle.ViewPrWorkCentreTitle_textR}"/>
+                        <h:outputText value="#{bundle.ViewPrWorkCentreLabel_TShiftId}"/>
+                        <h:outputText value="#{prWorkCentreController.selected.TShiftId}" title="#{bundle.ViewPrWorkCentreTitle_TShiftId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PrWorkCentreViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

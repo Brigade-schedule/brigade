@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PsPersonCreateDlg" widgetVar="PsPersonCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePsPersonTitle}">
+            <h:form id="PsPersonCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{psPersonController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePsPersonLabel_userId}" for="userId" />
+                        <p:inputText id="userId" value="#{psPersonController.selected.userId}" title="#{bundle.CreatePsPersonTitle_userId}" required="true" requiredMessage="#{bundle.CreatePsPersonRequiredMessage_userId}"/>
+                        <p:outputLabel value="#{bundle.CreatePsPersonLabel_tabnName}" for="tabnName" />
+                        <p:inputText id="tabnName" value="#{psPersonController.selected.tabnName}" title="#{bundle.CreatePsPersonTitle_tabnName}" />
+                        <p:outputLabel value="#{bundle.CreatePsPersonLabel_familyR}" for="familyR" />
+                        <p:inputText id="familyR" value="#{psPersonController.selected.familyR}" title="#{bundle.CreatePsPersonTitle_familyR}" />
+                        <p:outputLabel value="#{bundle.CreatePsPersonLabel_wcId}" for="wcId" />
+                        <p:selectOneMenu id="wcId" value="#{psPersonController.selected.wcId}" >
+                            <f:selectItems value="#{prWorkCentreController.itemsAvailableSelectOne}"
+                                           var="wcIdItem"
+                                           itemValue="#{wcIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePsPersonLabel_brigadeId}" for="brigadeId" />
+                        <p:selectOneMenu id="brigadeId" value="#{psPersonController.selected.brigadeId}" >
+                            <f:selectItems value="#{psBrigadeController.itemsAvailableSelectOne}"
+                                           var="brigadeIdItem"
+                                           itemValue="#{brigadeIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePsPersonLabel_profId}" for="profId" />
+                        <p:selectOneMenu id="profId" value="#{psPersonController.selected.profId}" >
+                            <f:selectItems value="#{psProfController.itemsAvailableSelectOne}"
+                                           var="profIdItem"
+                                           itemValue="#{profIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{psPersonController.create}" value="#{bundle.Save}" update="display,:PsPersonListForm:datalist,:growl" oncomplete="handleSubmit(args,'PsPersonCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PsPersonCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
