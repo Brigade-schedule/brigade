@@ -3,46 +3,223 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
-        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <title><ui:insert name="title">Brigades</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
         <h:outputScript library="js" name="jsfcrud.js"/>
+        
+        <style>
+            #j_idt22{
+                background: #f9f7f6;
+            }
+
+            #j_idt12 > tbody > tr{
+                width: 100%;
+                background: #f9f7f6;
+                height: 80px;
+            }
+            .panelGridMenu{
+                border: none;
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            a{
+                outline: none;
+            }
+
+            body{
+                padding: 0;
+                background: #f9f7f6;
+            }
+            .ui-widget-content {
+                border: none;
+            }
+
+            .northLayout{
+                box-shadow: 0px 0px 13px 0px rgba(203, 203, 203, 1);
+            }
+
+            .bgLayout .ui-layout-unit-content,
+            .centerLayout .ui-layout-unit-content,
+            .southLayout .ui-layout-unit-content{
+                background: #f9f7f6;
+                overflow-x: hidden !important;
+            }
+
+            /*
+                    Изображения для иконок
+                Иконки для меню черного цвета и белого цвета,
+                при активном элементе и наведении на элемент белая иконка
+            */
+            .handbook{
+                background-image: url("/brigade/faces/javax.faces.resource/images/ui-icons_handbook.png?ln=primefaces-bella") !important;
+                background-position: 0 !important;
+            }
+            .home{
+                background-image: url("/brigade/faces/javax.faces.resource/images/ui-icons_home.png?ln=primefaces-bella") !important;
+                background-position: 0 !important;
+            }
+            .graf{
+                background-image: url("/brigade/faces/javax.faces.resource/images/ui-icons_graf.png?ln=primefaces-bella") !important;
+                background-position: 0 !important;
+            }
+            #j_idt14\3a j_idt15 > ul > li.ui-tabmenuitem.ui-state-default.ui-state-active.ui-corner-top.ui-tabmenuitem-hasicon > a > span.ui-menuitem-icon.ui-icon.home,
+            #j_idt14\3a j_idt15 > ul > li.ui-tabmenuitem.ui-state-default.ui-state-hover.ui-corner-top.ui-tabmenuitem-hasicon > a > span.ui-menuitem-icon.ui-icon.home{
+                background-image: url("/brigade/faces/javax.faces.resource/images/ui-icons_home2.png?ln=primefaces-bella") !important;
+                background-position: 0 !important;
+            }
+            #j_idt14\3a j_idt15 > ul > li.ui-tabmenuitem.ui-state-default.ui-state-active.ui-corner-top.ui-tabmenuitem-hasicon > a > span.ui-menuitem-icon.ui-icon.graf,
+            #j_idt14\3a j_idt15 > ul > li.ui-tabmenuitem.ui-state-default.ui-state-hover.ui-corner-top.ui-tabmenuitem-hasicon > a > span.ui-menuitem-icon.ui-icon.graf{
+                background-image: url("/brigade/faces/javax.faces.resource/images/ui-icons_graf2.png?ln=primefaces-bella") !important;
+                background-position: 0 !important;
+            }
+            #j_idt14\3a j_idt15 > ul > li.ui-tabmenuitem.ui-state-default.ui-state-active.ui-corner-top.ui-tabmenuitem-hasicon > a > span.ui-menuitem-icon.ui-icon.handbook,
+            #j_idt14\3a j_idt15 > ul > li.ui-tabmenuitem.ui-state-default.ui-state-hover.ui-corner-top.ui-tabmenuitem-hasicon > a > span.ui-menuitem-icon.ui-icon.handbook{
+                background-image: url("/brigade/faces/javax.faces.resource/images/ui-icons_handbook2.png?ln=primefaces-bella") !important;
+                background-position: 0 !important;
+            }
+
+
+            /*
+                    Меню
+                Положение меню,
+                ширина элементов меню,
+                ширина ссылки по размеру элемента, 
+                размер иконок для меню,
+                выравнивание по текста элемента меню по высоте и левому краю
+            */
+            #j_idt14\3a j_idt15{
+                position: static;
+                float: right;
+                margin-top: 10px;
+                margin-right: 25px;
+            }
+            #j_idt14\3a j_idt15 > ul > li{
+                width: 180px;
+            }
+            #j_idt14\3a j_idt15 > ul > li > a{
+                width: 100%;
+                padding-right: 0;
+            }
+            #j_idt14\3a j_idt15 > ul > li > a > span.ui-menuitem-icon.ui-icon.home,.graf,.handbook{
+                width: 32px;
+                height: 32px;
+            }
+            #j_idt14\3a j_idt15 > ul > li > a > span.ui-menuitem-text{
+                line-height: 32px;
+                float: left;
+                margin-left: 10px;
+            }
+            /*
+                    Элементы меню
+                Закругление краев и настройка бордеров
+            */
+            #j_idt14\3a j_idt15 > ul > li:nth-child(1) {
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+            }
+            #j_idt14\3a j_idt15 > ul > li:nth-child(2) {
+                border-left: none;
+                border-right: none;
+            }
+            #j_idt14\3a j_idt15 > ul > li:nth-child(3) {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+
+            /*
+                    Сетка в хедере
+                Шрифт, настройка бордеров и отступов
+            */
+            td.ui-panelgrid-cell.logoCol,
+            td.ui-panelgrid-cell.menuCol{
+                font-size: 24px !important;
+                border: none;
+                padding: 0;
+            }
+            .ui-widget {
+                font-size: 16px !important;
+            }
+
+            /*
+                    Для планшетов
+                Скрытие меню для планшетов
+            */
+            @media only screen and (max-width: 1000px) {
+                .panelGridMenu .menuCol{
+                    text-align: center;
+                }
+
+                td.ui-panelgrid-cell.logoCol{
+                    text-align: center;
+                    margin: 0 auto;
+                    line-height: 80px;
+                }
+                td.ui-panelgrid-cell.menuCol{
+                    display: none;
+                }
+                #j_idt13{
+                    background: #f9f7f6;
+                }
+
+            }
+
+        </style>
     </h:head>
 
     <h:body>
 
         <p:growl id="growl" life="3000" />
 
-        <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
-                <h:form id="menuForm">
-                    <p:menubar>
-                        <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
-                        <p:submenu label="#{bundle.Maintenance}">
-                            <p:menuitem value="PrWorkCentre" outcome="/jsf/prWorkCentre/List.xhtml" />
-                            <p:menuitem value="PsBgraf" outcome="/jsf/psBgraf/List.xhtml" />
-                            <p:menuitem value="PsBrigade" outcome="/jsf/psBrigade/List.xhtml" />
-                            <p:menuitem value="PsPerson" outcome="/jsf/psPerson/List.xhtml" />
-                            <p:menuitem value="PsProf" outcome="/jsf/psProf/List.xhtml" />
-                            <p:menuitem value="PsShift" outcome="/jsf/psShift/List.xhtml" />
-                            <p:menuitem value="PsTShift" outcome="/jsf/psTShift/List.xhtml" />
-                        </p:submenu>
-                    </p:menubar>
-                </h:form>
+        <p:layout styleClass="bgLayout" fullPage="true">
+
+            <p:layoutUnit styleClass="northLayout" position="north" size="80" >
+                <p:panelGrid columns="2" columnClasses="logoCol,menuCol" styleClass="panelGridMenu" >
+                    <h:outputText value="#{bundle.AppName}" style="color: #454545; padding-left: 40px;"></h:outputText>
+
+                    <h:form styleClass="formMenu" style="height: 80px; background: #f9f7f6;">
+                        <p:tabMenu activeIndex="#{param.menu}">
+                            <p:menuitem value="#{bundle.Home}" outcome="/index" icon="home">
+                                <f:param name="menu" value="0" />
+                            </p:menuitem>
+                            <p:menuitem value="#{bundle.Bgraf}" outcome="/bgraf" icon="graf">
+                                <f:param name="menu" value="1" />
+                            </p:menuitem>
+                            <p:menuitem value="#{bundle.Handbooks}" outcome="/handbooks" icon="handbook">
+                                <f:param name="menu" value="2" />
+                            </p:menuitem>
+                        </p:tabMenu>
+                    </h:form>
+                </p:panelGrid>
             </p:layoutUnit>
 
-            <p:layoutUnit position="south" size="60">
-                <ui:insert name="footer"/>
-            </p:layoutUnit>
-
-            <p:layoutUnit position="center">
+            <p:layoutUnit styleClass="centerLayout" position="center">
                 <ui:insert name="body"/>
+
+                <!--                <div class="container" id="slider">
+                                    <div id="sidebar">
+                                        <ul>
+                                            <li><a href="/brigade/faces/index.xhtml">Главная</a></li>
+                                            <li><a href="/brigade/faces/jsf/prWorkCentre/List.xhtml">График работы бригад</a></li>
+                                            <li><a href="#">Регистрация бригад</a></li>
+                                            <li><a href="/brigade/faces/handbooks.xhtml">Справочники</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="main-content">
+                                        <a href="#" data-toggle=".container" id="sidebar-toggle">
+                                            <span class="bar"></span>
+                                            <span class="bar"></span>
+                                            <span class="bar"></span>
+                                        </a>
+                                    </div>
+                                </div>-->
+
             </p:layoutUnit>
-
         </p:layout>
-
     </h:body>
 
 </html>
