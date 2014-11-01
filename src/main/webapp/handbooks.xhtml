@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <script type="text/javascript">
+            function autoResize(id) {
+                var newheight;
+                var newwidth;
+
+                if (document.getElementById) {
+                    newheight = document.getElementById(id).contentWindow.document.body.scrollHeight;
+                    newwidth = document.getElementById(id).contentWindow.document.body.scrollWidth;
+                }
+
+                document.getElementById(id).height = (newheight) + "px";
+                document.getElementById(id).width = (newwidth) + "px";
+            }
+        </script>
+    </h:head>
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.Handbooks}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <p:tabView id="tabviewHandbooks" styleClass="handbooksTabs" cache="true" dynamic="true" >
+                <p:tab id="tab1" title="#{bundle.ListPrWorkCentreTitle}">
+                    <iframe id="frameWC" frameborder="0"  src="jsf/prWorkCentre/List.xhtml" width="100%" height="433px"></iframe>
+                </p:tab>
+                <p:tab id="tab2" title="#{bundle.ListPsBrigadeTitle}">
+                    <iframe id="frameBR" frameborder="0" src="jsf/psBrigade/List.xhtml" width="100%" height="433px"></iframe>
+                </p:tab>
+                <p:tab id="tab3" title="#{bundle.ListPsPersonTitle}">
+                    <iframe id="framePE" frameborder="0" src="jsf/psPerson/List.xhtml" width="100%" height="433px"></iframe>
+                </p:tab>
+                <p:tab id="tab4" title="#{bundle.ListPsProfTitle}">
+                    <iframe id="framePR" frameborder="0" src="jsf/psProf/List.xhtml" width="100%" height="433px"></iframe>
+                </p:tab>
+                <p:tab id="tab5" title="#{bundle.ListPsShiftTitle}">
+                    <iframe id="frameSH" frameborder="0" src="jsf/psShift/List.xhtml" width="100%" height="433px"></iframe>
+                </p:tab>
+                <p:tab id="tab6" title="#{bundle.ListPsTShiftTitle}">
+                    <iframe id="frameTS" frameborder="0" src="jsf/psTShift/List.xhtml" width="100%" height="433px" onLoad="autoResize('frameTS');"></iframe>
+                </p:tab>
+            </p:tabView>
+
+            <!-- Попробовать ui:include с <p:tab id="tab #"> !!!-->
+
+            <!--        Not working     -->
+            <!--<p:tabView id="tabview"
+                       value="#{Tabs.tabList}"
+                       var="pageUrl"
+                       binding="#{Tabs.tabView}"
+                       cache="true" widgetVar="tabviewV">
+                <p:tab id="tab"  title="#{pageUrl}" >
+                    <iframe src="#{pageUrl}" width="100%" height="572px"></iframe>
+                </p:tab>
+            </p:tabView>-->
+        </ui:define>
+    </ui:composition>
+
+</html>
