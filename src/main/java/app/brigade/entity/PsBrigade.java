@@ -179,7 +179,7 @@ public class PsBrigade implements Serializable {
 
     @Override
     public String toString() {
-        return "app.brigade.entity.PsBrigade[ brigadeId=" + brigadeId + " ]";
+        return brigadeName;
     }
     
 }

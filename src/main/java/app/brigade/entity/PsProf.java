@@ -121,7 +121,7 @@ public class PsProf implements Serializable {
 
     @Override
     public String toString() {
-        return "app.brigade.entity.PsProf[ profId=" + profId + " ]";
+        return textR;
     }
     
 }

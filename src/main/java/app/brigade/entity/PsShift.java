@@ -157,7 +157,7 @@ public class PsShift implements Serializable {
 
     @Override
     public String toString() {
-        return "app.brigade.entity.PsShift[ shiftId=" + shiftId + " ]";
+        return textR + "(" + shiftName + ")";
     }
     
 }

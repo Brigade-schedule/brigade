@@ -33,8 +33,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "PrWorkCentre.findAll", query = "SELECT p FROM PrWorkCentre p"),
     @NamedQuery(name = "PrWorkCentre.findByWcId", query = "SELECT p FROM PrWorkCentre p WHERE p.wcId = :wcId"),
-    @NamedQuery(name = "PrWorkCentre.findByTextR", query = "SELECT p FROM PrWorkCentre p WHERE p.textR = :textR")})
+    @NamedQuery(name = "PrWorkCentre.findByTextR", query = "SELECT p FROM PrWorkCentre p WHERE p.textR = :textR"),
+    @NamedQuery(name = "PrWorkCentre.findWcId", query = "SELECT p.wcId FROM PrWorkCentre p")})
 public class PrWorkCentre implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -134,7 +136,7 @@ public class PrWorkCentre implements Serializable {
 
     @Override
     public String toString() {
-        return "app.brigade.entity.PrWorkCentre[ wcId=" + wcId + " ]";
+        return wcId.toString();
     }
-    
+
 }

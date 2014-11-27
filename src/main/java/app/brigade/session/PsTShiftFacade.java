@@ -6,6 +6,7 @@
 package app.brigade.session;
 
 import app.brigade.entity.PsTShift;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,7 +24,7 @@ public class PsTShiftFacade extends AbstractFacade<PsTShift> {
     protected EntityManager getEntityManager() {
         return em;
     }
-
+   
     public PsTShiftFacade() {
         super(PsTShift.class);
     }

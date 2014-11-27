@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
@@ -18,19 +19,27 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
 
 @Named("prWorkCentreController")
 @SessionScoped
 public class PrWorkCentreController implements Serializable {
 
-    @EJB
+    @Inject
     private app.brigade.session.PrWorkCentreFacade ejbFacade;
     private List<PrWorkCentre> items = null;
+    private List<PrWorkCentre> listWcId = null;
     private PrWorkCentre selected;
+    
 
     public PrWorkCentreController() {
     }
 
+    @PostConstruct
+    private void init(){
+        listWcId = ejbFacade.findWcId();
+    }
+    
     public PrWorkCentre getSelected() {
         return selected;
     }
@@ -80,7 +89,11 @@ public class PrWorkCentreController implements Serializable {
         }
         return items;
     }
-
+    
+    public List<PrWorkCentre> getListWcId() {
+        return listWcId;
+    }
+    
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();

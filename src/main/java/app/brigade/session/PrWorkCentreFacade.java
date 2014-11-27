@@ -6,9 +6,11 @@
 package app.brigade.session;
 
 import app.brigade.entity.PrWorkCentre;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -24,8 +26,19 @@ public class PrWorkCentreFacade extends AbstractFacade<PrWorkCentre> {
         return em;
     }
 
+    @Override
+    public List<PrWorkCentre> findWcId() {
+        return em.createNamedQuery("PrWorkCentre.findWcId", PrWorkCentre.class).getResultList();
+ }
+    
+//    public PrWorkCentre tsForWc(PrWorkCentre wcId){
+//        Query tsWc = em.createQuery("select wc.tShiftId from PsTShift ts where wc.tsId in :wcId");
+//        tsWc.setParameter("wcId", wcId);
+//        return (PrWorkCentre) tsWc.getSingleResult();
+//    }
+    
     public PrWorkCentreFacade() {
         super(PrWorkCentre.class);
     }
-    
+       
 }

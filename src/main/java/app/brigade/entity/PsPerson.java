@@ -132,7 +132,7 @@ public class PsPerson implements Serializable {
 
     @Override
     public String toString() {
-        return "app.brigade.entity.PsPerson[ userId=" + userId + " ]";
+        return familyR;
     }
     
 }

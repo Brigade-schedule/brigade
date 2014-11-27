@@ -98,9 +98,19 @@
                 margin-top: 10px;
                 margin-right: 25px;
             }
-            #j_idt14\3a j_idt15 > ul > li{
-                width: 180px;
+            
+            #j_idt14\3a j_idt15 > ul > li:nth-child(1){
+                width: 130px;
             }
+            
+            #j_idt14\3a j_idt15 > ul > li:nth-child(2){
+                width: 220px;
+            }
+            
+            #j_idt14\3a j_idt15 > ul > li:nth-child(3){
+                width: 170px;
+            }
+            
             #j_idt14\3a j_idt15 > ul > li > a{
                 width: 100%;
                 padding-right: 0;
@@ -109,8 +119,9 @@
                 width: 32px;
                 height: 32px;
             }
+            
             #j_idt14\3a j_idt15 > ul > li > a > span.ui-menuitem-text{
-                line-height: 32px;
+                line-height: 35px;
                 float: left;
                 margin-left: 10px;
             }
@@ -144,7 +155,7 @@
             .ui-widget {
                 font-size: 16px !important;
             }
-
+            
             /*
                     Для планшетов
                 Скрытие меню для планшетов
@@ -160,7 +171,7 @@
                     line-height: 80px;
                 }
                 td.ui-panelgrid-cell.menuCol{
-                    display: none;
+                    display: inherit;
                 }
                 #j_idt13{
                     background: #f9f7f6;
@@ -183,10 +194,10 @@
 
                     <h:form styleClass="formMenu" style="height: 80px; background: #f9f7f6;">
                         <p:tabMenu activeIndex="#{param.menu}">
-                            <p:menuitem value="#{bundle.Home}" outcome="/index" icon="home">
+                            <p:menuitem value="#{bundle.Bgraf}" outcome="/bgraf" icon="graf">
                                 <f:param name="menu" value="0" />
                             </p:menuitem>
-                            <p:menuitem value="#{bundle.Bgraf}" outcome="/bgraf" icon="graf">
+                            <p:menuitem value="#{bundle.RegBrigades}" outcome="/regBrigades" icon="home">
                                 <f:param name="menu" value="1" />
                             </p:menuitem>
                             <p:menuitem value="#{bundle.Handbooks}" outcome="/handbooks" icon="handbook">

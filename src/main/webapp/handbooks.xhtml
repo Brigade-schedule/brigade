@@ -5,14 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <style>
-            body {
-                background-color:#f9f7f6;
-            }
-            iframe#frameTS{
-                background-color:#f9f7f6;
-            }
-        </style>
+        <h:outputScript library="webjars" name="jquery/2.1.1/jquery.min.js" />
     </h:head>
     <ui:composition template="/template.xhtml">
 
@@ -23,22 +16,22 @@
         <ui:define name="body">
             <p:tabView id="tabviewHandbooks" styleClass="handbooksTabs" cache="true" dynamic="true" >
                 <p:tab id="tab1" title="#{bundle.ListPrWorkCentreTitle}">
-                    <iframe id="frameWC" frameborder="0"  src="jsf/prWorkCentre/List.xhtml" width="100%" height="433px"></iframe>
+                    <iframe id="frameWC" frameborder="0"  src="jsf/prWorkCentre/List.xhtml" width="100%" height="435px"></iframe>
                 </p:tab>
                 <p:tab id="tab2" title="#{bundle.ListPsBrigadeTitle}">
-                    <iframe id="frameBR" frameborder="0" src="jsf/psBrigade/List.xhtml" width="100%" height="433px"></iframe>
+                    <iframe id="frameBR" frameborder="0" src="jsf/psBrigade/List.xhtml" width="100%" height="435px"></iframe>
                 </p:tab>
                 <p:tab id="tab3" title="#{bundle.ListPsPersonTitle}">
-                    <iframe id="framePE" frameborder="0" src="jsf/psPerson/List.xhtml" width="100%" height="433px"></iframe>
+                    <iframe id="framePE" frameborder="0" src="jsf/psPerson/List.xhtml" width="100%" height="435px"></iframe>
                 </p:tab>
                 <p:tab id="tab4" title="#{bundle.ListPsProfTitle}">
-                    <iframe id="framePR" frameborder="0" src="jsf/psProf/List.xhtml" width="100%" height="433px"></iframe>
+                    <iframe id="framePR" frameborder="0" src="jsf/psProf/List.xhtml" width="100%" height="435px"></iframe>
                 </p:tab>
                 <p:tab id="tab5" title="#{bundle.ListPsShiftTitle}">
-                    <iframe id="frameSH" frameborder="0" src="jsf/psShift/List.xhtml" width="100%" height="433px"></iframe>
+                    <iframe id="frameSH" frameborder="0" src="jsf/psShift/List.xhtml" width="100%" height="435px"></iframe>
                 </p:tab>
                 <p:tab id="tab6" title="#{bundle.ListPsTShiftTitle}">
-                    <iframe id="frameTS" frameborder="0" src="jsf/psTShift/List.xhtml" width="100%" height="433px" onLoad="autoResize('frameTS');"></iframe>
+                    <iframe id="frameTS" frameborder="0" src="jsf/psTShift/List.xhtml" width="100%" height="300px"></iframe>
                 </p:tab>
             </p:tabView>
 
