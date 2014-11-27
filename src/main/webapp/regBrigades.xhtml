@@ -13,48 +13,42 @@
 
         <ui:define name="body">
             <h:form id="regBrigades">
-                <div class="ui-grid ui-grid-responsive">
-                    <div class="ui-grid-row">
-                        <p:fieldset style="margin-bottom:20px; border: 1px solid; width: 100%;">
-                            <div class="ui-grid-col-12">
-                                <h:form id="wcFrom">
-                                    
-                                    <h:panelGrid columns="2" cellpadding="5">
-                                        <p:outputLabel value="Рабочий центр:" for="wcIdAC" />
-                                        <p:autoComplete id="wcIdAC" forceSelection="true" required="true" 
-                                                        requiredMessage="Вы должны ввести рабочий центр" 
-                                                        value="#{regBrigades.wcId}"
-                                                        itemLabel="#{wc.textR}" itemValue="#{wc}"
-                                                        completeMethod="#{autoCompleteViewWcId.completeWcId}"  var="wc" converter="prWorkCentre">
-                                            
-                                            <p:ajax event="itemSelect" process=":regBrigades:wcFrom:wcIdAC" listener="#{regBrigades.lisn}" update=":regBrigades:wcFrom:tShift" />
-                                        </p:autoComplete> 
-                                        
-                                        
-                                        <p:outputLabel for="calendar" value="Дата: " />
-                                        <p:calendar id="calendar" value="#{regBrigades.date}" pattern="dd-MM-yy" mask="true" mindate="1-1-14" maxdate="31-12-14" showOn="button" locale="ru"/>
-                                        
-                                        <p:outputLabel for="tShift" value="Модель смены:" />
-                                        <p:inputText id="tShift" value="#{regBrigades.wcId.TShiftId.textR}" readonly="true" />
-                                        
-                                        <p:outputLabel for="shift" value="Смена:" />
-                                        <p:autoComplete id="shift" dropdown="true" value="" />
-                                    </h:panelGrid>
-                                </h:form>
-                            </div>
-                        </p:fieldset>
-                    </div>
-                    <div class="ui-grid-row">
-                        <div class="ui-grid-col-6"></div>
-                        <div class="ui-grid-col-3"></div>
-                        <div class="ui-grid-col-3"></div>
-                    </div>
-                    <div class="ui-grid-row">
-                        <div class="ui-grid-col-6"></div>
-                        <div class="ui-grid-col-3"></div>
-                        <div class="ui-grid-col-3"></div>
-                    </div>
-                </div>
+                <p:fieldset style="margin-bottom:20px; border: 1px solid; width: 100%;">
+                    <h:form id="wcForm">
+                        <p:panelGrid>
+                            <p:row>
+                                <p:column style="border: none;">
+                                    <p:outputLabel value="Рабочий центр:" for="wcIdAC" />
+                                    <br/>
+                                    <p:autoComplete id="wcIdAC" forceSelection="true" required="true" 
+                                                    requiredMessage="Вы должны ввести рабочий центр" 
+                                                    value="#{regBrigades.wcId}"
+                                                    itemLabel="#{wc.textR}" itemValue="#{wc}"
+                                                    completeMethod="#{autoCompleteViewWcId.completeWcId}"  var="wc" converter="prWorkCentre">
+        <!--                                <p:ajax event="itemSelect" process=":regBrigades:wcForm:wcIdAC" listener="#{regBrigades.lisn}" update=":regBrigades:wcForm:tShift" />-->
+                                    </p:autoComplete> 
+                                </p:column>
+                                <p:column style="border: none;">
+                                    <p:outputLabel for="calendar" value="Дата: " />
+                                    <br/>
+                                    <p:calendar id="calendar" value="#{regBrigades.date}" pattern="dd-MM-yy" mask="true" mindate="1-1-14" maxdate="31-12-14" showOn="button" locale="ru"/>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column style="border: none;">
+                                    <p:outputLabel for="tShift" value="Модель смены:" />
+                                    <br/>
+                                    <p:inputText id="tShift" value="#{regBrigades.wcId.TShiftId.textR}" readonly="true" /> 
+                                </p:column>
+                                <p:column style="border: none;">
+                                    <p:outputLabel for="shift" value="Смена:" />
+                                    <br/>
+                                    <p:autoComplete id="shift" dropdown="true" value="" />
+                                </p:column>
+                            </p:row>
+                        </p:panelGrid>
+                    </h:form>
+                </p:fieldset>
             </h:form>
         </ui:define>
     </ui:composition>

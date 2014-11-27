@@ -12,7 +12,7 @@
     text-align: center;
 }
 .ui-button {
-    margin-top: 10px !important;
+    /* margin-top: 10px !important; */
 }
 #j_idt23\3a j_idt24{
     padding: 0px !important;
@@ -192,14 +192,14 @@ body, html {
 }
 
 
-#regBrigades\3a wcFrom\3a shift > button {
+#regBrigades\3a wcForm\3a shift > button {
     margin-top: 0 !important;
 }
 
-#regBrigades\3a calendar > button > span.ui-button-icon-left.ui-icon.ui-icon-calendar{
+/*#regBrigades\3a calendar > button > span.ui-button-icon-left.ui-icon.ui-icon-calendar{
     zoom:1.5;
 }
 
 #regBrigades\3a j_idt24 > div > div > table > tbody > tr:nth-child(1) > td:nth-child(4){
     display: block;
-}
+}*/
