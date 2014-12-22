@@ -36,7 +36,7 @@ public class AutoCompleteViewWcId {
                 
             }  
         } 
-        System.out.println("gg");
+        System.out.println("[][completeWcId]");
          
         return filteredWcId;
     }
