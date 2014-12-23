@@ -12,12 +12,185 @@
 
         <ui:define name="body">
             <h:form id="HandbooksForm">
-                <p:panelGrid columnClasses="1" columns="3">
-                    <p:button>44</p:button>
-                    <p:button>44</p:button>
-                </p:panelGrid>
+                <p:fieldset style="margin-bottom:20px; border: 1px solid; width: 100%;">
+                    <h:form id="bgrafForm">
+                        <p:panelGrid>
+                            <p:row>
+                                <p:column style="border: none;">
+                                    <p:outputLabel value="Рабочий центр:" for="wcIdAC" />
+                                    <br/>
+                                    <p:autoComplete id="wcIdAC" forceSelection="true" required="true" 
+                                                    requiredMessage="Вы должны ввести рабочий центр" 
+                                                    value="#{regBrigades.wcId}"
+                                                    itemLabel="#{wc.textR}" itemValue="#{wc}"
+                                                    completeMethod="#{autoCompleteViewWcId.completeWcId}"  var="wc" converter="prWorkCentre">
+                                    </p:autoComplete>
+                                    <br/>
+                                    <br/>
+                                    <p:outputLabel for="periodStart" value="С:" style="float: left;"/>
+                                    <br/>
+                                    <p:calendar  id="periodStart" value="#{regBrigades.date}"  locale="ru"  mode="popup" showOn="button" pattern="dd.MM.yyyy HH:mm:ss"/>
+                                </p:column>
+
+                                <p:column style="border: none;">
+                                    <p:outputLabel for="tShift" value="Модель смены:" />
+                                    <br/>
+                                    <p:inputText id="tShift" value="" readonly="true" /> 
+                                    <br/>
+                                    <br/>
+                                    <p:outputLabel for="periodEnd" value="По:" style=" float: left;"/>
+                                    <br/>
+                                    <p:calendar id="periodEnd" value="#{regBrigades.date}" locale="ru" mode="popup" showOn="button" pattern="dd.MM.yyyy HH:mm:ss"/>
+                                </p:column>
+                                <p:column style="border: none; width: 10%; border-right: 1px solid;"></p:column>
+                                <p:column style="border: none; width: 10%; border-left: 1px solid;"></p:column>
+                                <p:column style="border: none;">
+                                    <p:outputLabel for="br" value="Имя бригады:"></p:outputLabel>
+                                    <br/>
+                                    <p:inputText id="br" readonly="true" value="1 Бригада"></p:inputText>
+                                    <br/>
+                                    <p:inputText id="br2" readonly="true" value="2 Бригада"></p:inputText>
+                                    <br/>
+                                    <p:inputText id="br3" readonly="true" value="3 Бригада"></p:inputText>
+                                </p:column>
+                                <p:column style="border: none;">
+                                    <p:outputLabel for="fam" value="Фамилия бригадира:"></p:outputLabel>
+                                    <br/>
+                                    <p:inputText id="fam" readonly="true" value="Иванов"></p:inputText>
+                                    <br/>
+                                    <p:inputText id="fam2" readonly="true" value="Петров"></p:inputText>
+                                    <br/>
+                                    <p:inputText id="fam3" readonly="true" value="Сидоров"></p:inputText>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column style="border: none;">
+                                    <p:button value="Выбор"></p:button>
+                                </p:column>
+                            </p:row>
+                        </p:panelGrid>
+                    </h:form>
+                </p:fieldset>
+                <p:fieldset style="margin-bottom:20px; border: 1px solid; width: 100%;">
+                    <legend style="text-decoration: underline" >График</legend> 
+                    <br/>
+                    <div class="ui-grid ui-grid-responsive">
+                        <div class="ui-grid-row">
+                            <div style="width: 70px;">Смена:</div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                        </div>
+                        <div class="ui-grid-row">
+                            <div style="width: 70px;">1</div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                        </div>
+                        <div class="ui-grid-row">
+                            <div style="width: 70px;">2</div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                        </div>
+                        <div class="ui-grid-row">
+                            <div style="width: 70px;">3</div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                            <div class="ui-grid-col-1" style="border: 1px solid; height: 40px; width: 40px;"></div>
+                        </div>
+                        <br/>
+                    </div>
+                </p:fieldset>
+
+                <p:fieldset  style="margin-bottom:20px; border: 1px solid; width: 100%;">
+                    <legend style="text-decoration: underline">Расчет планового графика</legend>  
+                    <br/>
+                    <div><p:outputLabel for="nn" value="Начать с бригады:" />
+                    <p:autoComplete id="nn" value="1 склад (ЦП2)" readonly="true" dropdown="true"/> 
+                    <p:outputLabel for="nnj" value="На:" style="margin-left: 60px;"/>
+                    <p:inputText id="nnj" value="3" style=" margin-left:9px; width: 20px;"/>  месяцев
+                    <p:button value="Расчет"></p:button>
+                    <p:button value="Сохранить" style="margin-left: 10px;"></p:button>
+                    <p:button value="Удалить" style="margin-left: 10px;"></p:button>
+                    </div>
+                    
+                    <br/>
+                </p:fieldset>
             </h:form>
         </ui:define>
     </ui:composition>
-    
+
 </html>
